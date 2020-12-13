@@ -1,6 +1,9 @@
 import React from 'react'
+import getConfig from '../near/config'
 
 function Home() {
+	const nearConfig = getConfig(process.env.REACT_APP_NETWORK_ENV)
+
 	return (
 		<div
 			className="h-screen relative bg-dark-primary-1 text-center App p-4 md:p-0 md:pb-4"
@@ -26,12 +29,22 @@ function Home() {
 						</div>
 						<div className="px-4">
 							<a
-								href="https://github.com/ParasHQ/giveaway-contract"
+								href="https://github.com/ParasHQ/giveaway-app"
 								target="_blank"
 								rel="noreferrer"
 								className="text-gray-100 font-semibold border-b-2 border-transparent hover:border-gray-100"
 							>
 								Github
+							</a>
+						</div>
+						<div className="px-4">
+							<a
+								href={`${nearConfig.explorerUrl}/accounts/${nearConfig.contractName}`}
+								target="_blank"
+								rel="noreferrer"
+								className="text-gray-100 font-semibold border-b-2 border-transparent hover:border-gray-100"
+							>
+								Contract
 							</a>
 						</div>
 					</div>
