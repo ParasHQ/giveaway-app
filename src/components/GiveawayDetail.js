@@ -22,6 +22,7 @@ function GiveawayDetail() {
 	const [hasMore, setHasMore] = useState(true)
 	const [isLoading, setIsLoading] = useState(true)
 	const [isNotFound, setIsNotFound] = useState(false)
+	const [isFetching, setIsFetching] = useState(false)
 
 	useEffect(() => {
 		getGiveaway()
@@ -59,18 +60,23 @@ function GiveawayDetail() {
 	}
 
 	const getParticipants = async () => {
+		if (isFetching) {
+			return
+		}
+		setIsFetching(true)
 		const _participants = await contractGetParticipants({
 			giveawayId: giveawayId,
 			start: numParticipant,
 			end: numParticipant + 10,
 		})
 
-		if (_participants.length === 0) {
+		if (_participants.length < 10) {
 			setHasMore(false)
 		} else {
 			setParticipants([...participants, ..._participants])
 			setNumParticipants(numParticipant + 10)
 		}
+		setIsFetching(false)
 	}
 
 	return (
