@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroller'
 import { Link, useParams } from 'react-router-dom'
+import getConfig from '../near/config'
 
 import {
 	contractGetGiveaway,
@@ -179,6 +180,22 @@ function GiveawayDetail() {
 												parseInt(giveaway.drawDate) / 10 ** 6
 											).toLocaleTimeString()}
 										</h2>
+										{giveaway.proof && (
+											<h4 className="mt-2 font-semibold text-lg">
+												<a
+													className="text-gray-100 font-semibold border-b-2 border-transparent hover:border-gray-100"
+													href={`${
+														getConfig(process.env.REACT_APP_NETWORK_ENV)
+															.explorerUrl
+													}/transactions/${giveaway.proof}`}
+													target="_blank"
+													rel="noreferrer"
+												>
+													Transaction Proof
+												</a>
+											</h4>
+										)}
+										<p></p>
 									</div>
 									<div className="m-auto mt-4 border-2 border-gray-800 border-dashed rounded-md p-6">
 										<h2 className="font-bold text-2xl mb-4">Winners 🎉</h2>
