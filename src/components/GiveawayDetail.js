@@ -184,7 +184,7 @@ function GiveawayDetail() {
 										<h2 className="font-bold text-2xl mb-4">Winners 🎉</h2>
 										<div className="flex flex-wrap">
 											{winners.map((user) => (
-												<h4 className="w-1/2 font-semibold text-lg">
+												<h4 className="w-full md:w-1/2 font-semibold text-lg">
 													<a
 														className="text-gray-100 font-semibold border-b-2 border-transparent hover:border-gray-100"
 														href={`https://paras.id/${user}`}
@@ -204,7 +204,7 @@ function GiveawayDetail() {
 								<InfiniteScroll loadMore={getParticipants} hasMore={hasMore}>
 									<div className="flex flex-wrap">
 										{participants.map((user, idx) => (
-											<h4 className="w-1/2 p-2" key={idx}>
+											<h4 className="w-full md:w-1/2 p-2" key={idx}>
 												<a
 													className="text-gray-100 font-semibold border-b-2 border-transparent hover:border-gray-100"
 													href={`https://paras.id/${user}`}
