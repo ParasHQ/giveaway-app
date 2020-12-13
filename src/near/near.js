@@ -1,7 +1,7 @@
 import { connect, Contract, keyStores, WalletConnection } from 'near-api-js'
 import getConfig from './config'
 
-const nearConfig = getConfig(process.env.NODE_ENV || 'development')
+const nearConfig = getConfig(process.env.REACT_APP_NETWORK_ENV || 'development')
 
 // Initialize contract & set global variables
 export async function initContract() {
@@ -28,11 +28,7 @@ export async function initContract() {
 		nearConfig.contractName,
 		{
 			// View methods are read only. They don't modify the state, but usually return some value.
-			viewMethods: [
-				'getGiveaway',
-				'getWinners',
-				'getParticipants',
-			],
+			viewMethods: ['getGiveaway', 'getWinners', 'getParticipants'],
 		}
 	)
 }
