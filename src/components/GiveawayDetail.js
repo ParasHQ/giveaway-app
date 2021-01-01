@@ -72,10 +72,9 @@ function GiveawayDetail() {
 
 		if (_participants.length < 10) {
 			setHasMore(false)
-		} else {
-			setParticipants([...participants, ..._participants])
-			setNumParticipants(numParticipant + 10)
 		}
+		setParticipants([...participants, ..._participants])
+		setNumParticipants(numParticipant + 10)
 		setIsFetching(false)
 	}
 
